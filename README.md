@@ -2,6 +2,9 @@
 
 A hackathon submission
 
+![image](resources/Screenshots/LightMode.png)
+![image](resources/Screenshots/DarkMode.png)
+
 ## 🎒 Tech Stack
 
 
