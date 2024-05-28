@@ -55,7 +55,6 @@ async def initialize_client(q: Q):
     # Add layouts, header, sidebar, main content, and footer
     q.page['meta'] = cards.meta
     q.page['header'] = cards.header
-    q.page['sidebar'] = cards.sidebar
     q.page['content'] = cards.main_content
     q.page['footer'] = cards.footer
     q.client.initialized = True

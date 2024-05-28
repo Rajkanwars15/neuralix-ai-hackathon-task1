@@ -36,9 +36,7 @@ meta = ui.meta_card(
             zones=[
                 ui.zone(name='header'),
                 ui.zone('body', direction=ui.ZoneDirection.ROW, zones=[
-                    # 20% wide sidebar
-                    ui.zone('sidebar', size='20%'),
-                    # Use remaining space for content
+                    # Use space for content
                     ui.zone('content'),
                 ]),
                 ui.zone(name='footer')
@@ -53,17 +51,7 @@ header = ui.header_card(
     title='neuralix.ai',
     subtitle='',
     image='https://i.imgur.com/yThsZ40.png',
-    items=[
-        ui.toggle(name='toggle_theme', label='Dark Mode', value=False, trigger=True)
-    ]
-)
-
-# Sidebar with navigation items using ui.nav
-sidebar = ui.nav_card(
-    box='sidebar',
-    title='',
-    subtitle='',
-    items=[
+    nav=[
         ui.nav_group('Menu 1', items=[
             ui.nav_item(name='#menu/1', label='Item 1'),
             ui.nav_item(name='#menu/2', label='Item 2'),
@@ -73,6 +61,16 @@ sidebar = ui.nav_card(
             ui.nav_item(name='#a', label='Item 4'),
             ui.nav_item(name='#b', label='Item 5'),
         ])
+    ],
+    items=[
+        # dark mode toggle switch
+        ui.toggle(name='toggle_theme', label='', value=False, trigger=True),
+        # profile in header
+        ui.menu(image='default', items=[
+            ui.command(name='profile', label='Profile', icon='Contact'),
+            ui.command(name='preferences', label='Preferences', icon='Settings'),
+            ui.command(name='logout', label='Logout', icon='SignOut'),
+    ])
     ]
 )
 
