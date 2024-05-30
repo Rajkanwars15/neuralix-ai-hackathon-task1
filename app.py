@@ -57,7 +57,6 @@ async def initialize_client(q: Q):
     q.page['header'] = cards.header
     q.page['content'] = cards.main_content
     q.page['example']=cards.example
-    q.page['summary']=cards.summary
 
     q.page['total_turbines'] = cards.total_turbines
     q.page['active'] = cards.active

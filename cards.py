@@ -47,7 +47,7 @@ meta = ui.meta_card(
                             ui.zone('predicted_failure'),
                             ui.zone('down_for_repairs'),
                         ]),
-                        
+
                     ]),
                 ]),
                 ui.zone(name='footer')
@@ -106,7 +106,6 @@ out_of_commission = ui.small_stat_card(box='out_of_commission', title='Out of Co
 healthy = ui.small_stat_card(box='healthy', title='Healthy', value='70')
 predicted_failure = ui.small_stat_card(box='predicted_failure', title='Predicted Failure', value='20')
 down_for_repairs = ui.small_stat_card(box='down_for_repairs', title='Down for Repairs', value='10')
-summary=ui.small_stat_card(box='summary', title='Summary', value='0') # does nothing much
 
 # Main content card
 main_content = ui.form_card(
