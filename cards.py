@@ -38,7 +38,17 @@ meta = ui.meta_card(
                 ui.zone('body', zones=[
                     # Use space for content
                     ui.zone('content'),
-                    ui.zone('example'),
+                    ui.zone('slide02', zones=[
+                        ui.zone('summary', direction=ui.ZoneDirection.ROW, zones=[
+                            ui.zone('total_turbines'),
+                            ui.zone('active'),
+                            ui.zone('out_of_commission'),
+                            ui.zone('healthy'),
+                            ui.zone('predicted_failure'),
+                            ui.zone('down_for_repairs'),
+                        ]),
+                        
+                    ]),
                 ]),
                 ui.zone(name='footer')
             ]
@@ -88,6 +98,15 @@ example = ui.plot_card(
     ]),
     plot=ui.plot([ui.mark(type='point', x='=weight', y='=height')])
 )
+
+
+total_turbines = ui.small_stat_card(box='total_turbines', title='Total Turbines', value='110')
+active = ui.small_stat_card(box='active', title='Active', value='100')
+out_of_commission = ui.small_stat_card(box='out_of_commission', title='Out of Commission', value='10')
+healthy = ui.small_stat_card(box='healthy', title='Healthy', value='70')
+predicted_failure = ui.small_stat_card(box='predicted_failure', title='Predicted Failure', value='20')
+down_for_repairs = ui.small_stat_card(box='down_for_repairs', title='Down for Repairs', value='10')
+summary=ui.small_stat_card(box='summary', title='Summary', value='0') # does nothing much
 
 # Main content card
 main_content = ui.form_card(

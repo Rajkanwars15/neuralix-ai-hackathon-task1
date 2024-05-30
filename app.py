@@ -44,7 +44,7 @@ async def initialize_app(q: Q):
     """
     logging.info('Initializing app')
     # Set initial argument values
-    q.app.cards = ['main', 'sidebar', 'content', 'example', 'footer', 'error']
+    q.app.cards = ['main', 'sidebar', 'content', 'example', 'summary', 'total_turbines', 'active', 'out_of_commission', 'healthy', 'predicted_failure', 'down_for_repairs', 'footer', 'error']
     q.app.initialized = True
 
 async def initialize_client(q: Q):
@@ -57,6 +57,15 @@ async def initialize_client(q: Q):
     q.page['header'] = cards.header
     q.page['content'] = cards.main_content
     q.page['example']=cards.example
+    q.page['summary']=cards.summary
+
+    q.page['total_turbines'] = cards.total_turbines
+    q.page['active'] = cards.active
+    q.page['out_of_commission'] = cards.out_of_commission
+    q.page['healthy'] = cards.healthy
+    q.page['predicted_failure'] = cards.predicted_failure
+    q.page['down_for_repairs'] = cards.down_for_repairs
+
     q.page['footer'] = cards.footer
     q.client.initialized = True
     await q.page.save()
