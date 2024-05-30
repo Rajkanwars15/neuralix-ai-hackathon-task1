@@ -1,6 +1,6 @@
 import sys
 import traceback
-from h2o_wave import Q, expando_to_dict, site, ui
+from h2o_wave import Q, expando_to_dict, ui, data
 
 # App name
 app_name = 'Dashboard'
@@ -9,7 +9,7 @@ app_name = 'Dashboard'
 repo_url = 'https://github.com/rajkanwars15/neuralix-ai-hackathon-task1'
 issue_url = f'{repo_url}/issues/new?assignees=rajkanwars15&labels=bug&template=error-report.md&title=%5BERROR%5D'
 
-# Meta card to hold the app's title, layouts, dialogs, theme and other meta information
+# Meta card to hold the app's title, layouts, dialogs, theme, and other meta information
 meta = ui.meta_card(
     themes=[
         ui.theme(
@@ -35,9 +35,10 @@ meta = ui.meta_card(
             breakpoint='xs',
             zones=[
                 ui.zone(name='header'),
-                ui.zone('body', direction=ui.ZoneDirection.ROW, zones=[
+                ui.zone('body', zones=[
                     # Use space for content
                     ui.zone('content'),
+                    ui.zone('example'),
                 ]),
                 ui.zone(name='footer')
             ]
@@ -52,15 +53,11 @@ header = ui.header_card(
     subtitle='',
     image='https://i.imgur.com/yThsZ40.png',
     nav=[
-        ui.nav_group('Menu 1', items=[
-            ui.nav_item(name='#menu/1', label='Item 1'),
-            ui.nav_item(name='#menu/2', label='Item 2'),
-            ui.nav_item(name='#menu/3', label='Item 3'),
+        ui.nav_group('Menu', items=[
+            ui.nav_item(name='#menu/monthly_data', label='Monthly Data'),
+            ui.nav_item(name='#menu/year_comparison', label='Year Comparison'),
+            ui.nav_item(name='#menu/summary_statistics', label='Summary Statistics'),
         ]),
-        ui.nav_group('Menu 2', items=[
-            ui.nav_item(name='#a', label='Item 4'),
-            ui.nav_item(name='#b', label='Item 5'),
-        ])
     ],
     items=[
         # dark mode toggle switch
@@ -70,8 +67,26 @@ header = ui.header_card(
             ui.command(name='profile', label='Profile', icon='Contact'),
             ui.command(name='preferences', label='Preferences', icon='Settings'),
             ui.command(name='logout', label='Logout', icon='SignOut'),
-    ])
+        ])
     ]
+)
+
+example = ui.plot_card(
+    box='example',
+    title='Point',
+    data=data('height weight', 10, rows=[
+        (170, 59),
+        (159.1, 47.6),
+        (166, 69.8),
+        (176.2, 66.8),
+        (160.2, 75.2),
+        (180.3, 76.4),
+        (164.5, 63.2),
+        (173, 60.9),
+        (183.5, 74.8),
+        (175.5, 70),
+    ]),
+    plot=ui.plot([ui.mark(type='point', x='=weight', y='=height')])
 )
 
 # Main content card

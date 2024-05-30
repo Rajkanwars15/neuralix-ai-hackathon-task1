@@ -1,5 +1,5 @@
 import logging
-from h2o_wave import Q, main, app, copy_expando, handle_on, on, ui
+from h2o_wave import Q, main, app, copy_expando, handle_on, on, ui, data
 import cards
 
 # Set up logging
@@ -44,7 +44,7 @@ async def initialize_app(q: Q):
     """
     logging.info('Initializing app')
     # Set initial argument values
-    q.app.cards = ['main', 'sidebar', 'content', 'footer', 'error']
+    q.app.cards = ['main', 'sidebar', 'content', 'example', 'footer', 'error']
     q.app.initialized = True
 
 async def initialize_client(q: Q):
@@ -56,6 +56,7 @@ async def initialize_client(q: Q):
     q.page['meta'] = cards.meta
     q.page['header'] = cards.header
     q.page['content'] = cards.main_content
+    q.page['example']=cards.example
     q.page['footer'] = cards.footer
     q.client.initialized = True
     await q.page.save()
