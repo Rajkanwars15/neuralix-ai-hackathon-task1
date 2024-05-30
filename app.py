@@ -44,7 +44,7 @@ async def initialize_app(q: Q):
     """
     logging.info('Initializing app')
     # Set initial argument values
-    q.app.cards = ['main', 'sidebar', 'content', 'example', 'summary', 'total_turbines', 'active', 'out_of_commission', 'healthy', 'predicted_failure', 'down_for_repairs', 'footer', 'error']
+    q.app.cards = ['main', 'sidebar', 'content', 'example', 'summary', 'total_turbines', 'active', 'out_of_commission', 'healthy', 'predicted_failure', 'down_for_repairs', 'mean_time_until_failure', 'footer', 'error']
     q.app.initialized = True
 
 async def initialize_client(q: Q):
@@ -56,7 +56,6 @@ async def initialize_client(q: Q):
     q.page['meta'] = cards.meta
     q.page['header'] = cards.header
     q.page['content'] = cards.main_content
-    q.page['example']=cards.example
 
     q.page['total_turbines'] = cards.total_turbines
     q.page['active'] = cards.active
@@ -64,6 +63,9 @@ async def initialize_client(q: Q):
     q.page['healthy'] = cards.healthy
     q.page['predicted_failure'] = cards.predicted_failure
     q.page['down_for_repairs'] = cards.down_for_repairs
+
+    q.page['mean_time_until_failure'] = cards.mean_time_until_failure
+    q.page['top_root_causes'] = cards.top_root_causes
 
     q.page['footer'] = cards.footer
     q.client.initialized = True

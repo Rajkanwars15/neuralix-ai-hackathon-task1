@@ -49,6 +49,12 @@ meta = ui.meta_card(
                         ]),
 
                     ]),
+                    ui.zone('slide03', zones=[
+                        ui.zone('failure_hori', direction=ui.ZoneDirection.ROW, zones=[
+                            ui.zone('mean_time_until_failure'),
+                        ]),
+                        ui.zone('top_root_causes'),
+                    ]),
                 ]),
                 ui.zone(name='footer')
             ]
@@ -81,31 +87,41 @@ header = ui.header_card(
     ]
 )
 
-example = ui.plot_card(
-    box='example',
-    title='Point',
-    data=data('height weight', 10, rows=[
-        (170, 59),
-        (159.1, 47.6),
-        (166, 69.8),
-        (176.2, 66.8),
-        (160.2, 75.2),
-        (180.3, 76.4),
-        (164.5, 63.2),
-        (173, 60.9),
-        (183.5, 74.8),
-        (175.5, 70),
-    ]),
-    plot=ui.plot([ui.mark(type='point', x='=weight', y='=height')])
-)
-
-
 total_turbines = ui.small_stat_card(box='total_turbines', title='Total Turbines', value='110')
 active = ui.small_stat_card(box='active', title='Active', value='100')
 out_of_commission = ui.small_stat_card(box='out_of_commission', title='Out of Commission', value='10')
 healthy = ui.small_stat_card(box='healthy', title='Healthy', value='70')
 predicted_failure = ui.small_stat_card(box='predicted_failure', title='Predicted Failure', value='20')
 down_for_repairs = ui.small_stat_card(box='down_for_repairs', title='Down for Repairs', value='10')
+
+# slide3
+#first plot
+
+mean_time_until_failure = ui.plot_card(
+    box='mean_time_until_failure',
+    title='Mean Time Until Failure by Machine Model',
+    data=data('model duration', 4, rows=[
+        ('V47-0.66', 0.8),
+        ('GE1.5-82.5', 2.3),
+        ('Z50', 2.4),
+        ('V117-4.3', 4.8),
+    ]),
+    plot=ui.plot([ui.mark(type='interval', x='=duration', y='=model', y_min=0)])
+)
+
+top_root_causes = ui.plot_card(
+    box='top_root_causes',
+    title='Top 3 Root Causes of Failure',
+    data=data('category value type', 4, rows=[
+        ('Blade', 0.59, 'Failure 1'),
+        ('Bearing', 0.21, 'Failure 1'),
+        ('Gearbox', 0.18, 'Failure 1'),
+        ('Misc.', 0.02, 'Failure 1'),
+    ]),
+    plot=ui.plot([
+        ui.mark(type='interval', x='=category', y='=value', color='=category', stack='auto', y_min=0, y_max=1)
+    ])
+)
 
 # Main content card
 main_content = ui.form_card(
