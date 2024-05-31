@@ -2,11 +2,15 @@
 
 A hackathon submission
 
+## Screenshots of the app
 ![image](resources/Screenshots/LightMode.png)
 ![image](resources/Screenshots/DarkMode.png)
 ![image](resources/Screenshots/SS1.png)
 ![image](resources/Screenshots/SS2.png)
 ![image](resources/Screenshots/SS3.png)
+
+### Works on mobile
+![image](resources/Screenshots/SS4.png)
 
 ## 🎒 Tech Stack
 
