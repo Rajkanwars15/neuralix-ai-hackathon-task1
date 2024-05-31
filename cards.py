@@ -1,6 +1,7 @@
 import sys
 import traceback
 from h2o_wave import Q, expando_to_dict, ui, data
+from charts import create_monthly_active_power_chart
 
 # App name
 app_name = 'Dashboard'
@@ -47,7 +48,7 @@ meta = ui.meta_card(
                             ui.zone('predicted_failure'),
                             ui.zone('down_for_repairs'),
                         ]),
-
+                        ui.zone('Monthly_Sum_of_LV_ActivePower'),
                     ]),
                     ui.zone('slide03', zones=[
                         ui.zone('failure_hori', direction=ui.ZoneDirection.ROW, zones=[
@@ -121,6 +122,15 @@ top_root_causes = ui.plot_card(
     plot=ui.plot([
         ui.mark(type='interval', x='=category', y='=value', color='=category', stack='auto', y_min=0, y_max=1)
     ])
+)
+
+with open('monthly_active_power.html', 'r') as file:
+    html_content = file.read()
+
+Monthly_Sum_of_LV_ActivePower = ui.frame_card(
+    box=('Monthly_Sum_of_LV_ActivePower'),
+    title='Monthly Sum of LV Active Power',
+    content=html_content
 )
 
 # Main content card

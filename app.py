@@ -44,7 +44,7 @@ async def initialize_app(q: Q):
     """
     logging.info('Initializing app')
     # Set initial argument values
-    q.app.cards = ['main', 'sidebar', 'content', 'example', 'summary', 'total_turbines', 'active', 'out_of_commission', 'healthy', 'predicted_failure', 'down_for_repairs', 'mean_time_until_failure', 'footer', 'error']
+    q.app.cards = ['main', 'sidebar', 'content', 'example', 'summary', 'total_turbines', 'active', 'out_of_commission', 'healthy', 'predicted_failure', 'down_for_repairs', 'mean_time_until_failure', 'Monthly_Sum_of_LV_ActivePower', 'footer', 'error']
     q.app.initialized = True
 
 async def initialize_client(q: Q):
@@ -63,6 +63,7 @@ async def initialize_client(q: Q):
     q.page['healthy'] = cards.healthy
     q.page['predicted_failure'] = cards.predicted_failure
     q.page['down_for_repairs'] = cards.down_for_repairs
+    q.page['Monthly_Sum_of_LV_ActivePower'] = cards.Monthly_Sum_of_LV_ActivePower
 
     q.page['mean_time_until_failure'] = cards.mean_time_until_failure
     q.page['top_root_causes'] = cards.top_root_causes

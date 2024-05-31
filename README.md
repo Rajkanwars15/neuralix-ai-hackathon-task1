@@ -4,6 +4,9 @@ A hackathon submission
 
 ![image](resources/Screenshots/LightMode.png)
 ![image](resources/Screenshots/DarkMode.png)
+![image](resources/Screenshots/SS1.png)
+![image](resources/Screenshots/SS2.png)
+![image](resources/Screenshots/SS3.png)
 
 ## 🎒 Tech Stack
 
